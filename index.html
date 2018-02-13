@@ -21,7 +21,48 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://tingox.github.io/output-first.html">Output first</a></h1>
+                    <h1 class="entry-title"><a href="https://tingox.github.io/progress-on-windows-.html">Progress on Windows</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2018-02-13T17:20:53+01:00">
+                Published: tir. 13 februar 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+        </address>
+<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+
+</footer><!-- /.post-info --><p>Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
+The script is simple</p>
+<div class="highlight"><pre><span></span>get-date -UFormat &#39;%Y-%m-%d %H:%M:%S&#39;
+</pre></div>
+
+
+<p>yes, that is all. From the Makefile, I run it as </p>
+<div class="highlight"><pre><span></span>powershell -File .\ScriptDate.ps1
+</pre></div>
+
+
+<p>the Makefile fragment looks like this</p>
+<div class="highlight"><pre><span></span>DATE := $(shell powershell -File .\ScriptDate.ps1)
+</pre></div>
+
+
+<p>very satisfying to finally figure this out.</p>
+<p>The problem with extra dashes ('-') still exists, the only improvement I have managed is to remove the dash in front.</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://tingox.github.io/output-first.html" rel="bookmark"
+                           title="Permalink to Output first">Output first</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2018-02-12T17:07:53+01:00">
                 Published: man. 12 februar 2018
@@ -32,13 +73,11 @@
         </address>
 <p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
 
-</footer><!-- /.post-info --><p>As the original article says; you have to commit and push the output directory <em>before</em> pushing the source files.
-Don't forget it again!</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>As the original article says; you have to commit and push the output directory <em>before</em> pushing the source files.
+Don't forget it again!</p>
+                <a class="readmore" href="https://tingox.github.io/output-first.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>

@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Just a blog - Blog</title><link href="https://tingox.github.io/" rel="alternate"></link><link href="https://tingox.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tingox.github.io/</id><updated>2018-02-12T17:07:53+01:00</updated><entry><title>Output first</title><link href="https://tingox.github.io/output-first.html" rel="alternate"></link><published>2018-02-12T17:07:53+01:00</published><updated>2018-02-12T17:07:53+01:00</updated><author><name>Torfinn Ingolfsen</name></author><id>tag:tingox.github.io,2018-02-12:/output-first.html</id><summary type="html">&lt;p&gt;As the original article says; you have to commit and push the output directory &lt;em&gt;before&lt;/em&gt; pushing the source files.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Just a blog - Blog</title><link href="https://tingox.github.io/" rel="alternate"></link><link href="https://tingox.github.io/feeds/blog.atom.xml" rel="self"></link><id>https://tingox.github.io/</id><updated>2018-02-13T17:20:53+01:00</updated><entry><title>Progress on Windows</title><link href="https://tingox.github.io/progress-on-windows-.html" rel="alternate"></link><published>2018-02-13T17:20:53+01:00</published><updated>2018-02-13T17:20:53+01:00</updated><author><name>Torfinn Ingolfsen</name></author><id>tag:tingox.github.io,2018-02-13:/progress-on-windows-.html</id><summary type="html">&lt;p&gt;Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
+The script is simple&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;get-date -UFormat &amp;#39;%Y-%m-%d %H:%M:%S&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;yes, that is all. From the Makefile, I run it as &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;powershell -File .\ScriptDate.ps1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;the Makefile fragment looks …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
+The script is simple&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;get-date -UFormat &amp;#39;%Y-%m-%d %H:%M:%S&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;yes, that is all. From the Makefile, I run it as &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;powershell -File .\ScriptDate.ps1
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;the Makefile fragment looks like this&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;DATE := $(shell powershell -File .\ScriptDate.ps1)
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;very satisfying to finally figure this out.&lt;/p&gt;
+&lt;p&gt;The problem with extra dashes ('-') still exists, the only improvement I have managed is to remove the dash in front.&lt;/p&gt;</content></entry><entry><title>Output first</title><link href="https://tingox.github.io/output-first.html" rel="alternate"></link><published>2018-02-12T17:07:53+01:00</published><updated>2018-02-12T17:07:53+01:00</updated><author><name>Torfinn Ingolfsen</name></author><id>tag:tingox.github.io,2018-02-12:/output-first.html</id><summary type="html">&lt;p&gt;As the original article says; you have to commit and push the output directory &lt;em&gt;before&lt;/em&gt; pushing the source files.
 Don't forget it again!&lt;/p&gt;</summary><content type="html">&lt;p&gt;As the original article says; you have to commit and push the output directory &lt;em&gt;before&lt;/em&gt; pushing the source files.
 Don't forget it again!&lt;/p&gt;</content></entry><entry><title>Pelican on Windows</title><link href="https://tingox.github.io/-pelican-on-windows-.html" rel="alternate"></link><published>2018-02-12T16:15:01+01:00</published><updated>2018-02-12T16:15:01+01:00</updated><author><name>Torfinn Ingolfsen</name></author><id>tag:tingox.github.io,2018-02-12:/-pelican-on-windows-.html</id><summary type="html">&lt;p&gt;Installing Pelican on Windows is quite easy. You need &lt;a href="https://www.python.org/"&gt;Python&lt;/a&gt; of course, then it is just 'pip install pelican' followed 
 by 'pip install MarkDown' and Pelican is installed. All this from &lt;a href="https://en.wikipedia.org/wiki/PowerShell"&gt;PowerShell&lt;/a&gt;.&lt;/p&gt;
