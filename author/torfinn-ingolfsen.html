@@ -3,8 +3,7 @@
 <head>
         <meta charset="utf-8" />
         <title>Just a blog - Torfinn Ingolfsen</title>
-        <link rel="stylesheet" href="https://tingox.github.io/theme/css/main.css" />
-        <link href="https://tingox.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Just a blog Atom Feed" />
+        <link rel="stylesheet" href="/theme/css/main.css" />
 
         <!--[if IE]>
             <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -13,32 +12,26 @@
 
 <body id="index" class="home">
         <header id="banner" class="body">
-                <h1><a href="https://tingox.github.io/">Just a blog </a></h1>
+                <h1><a href="/">Just a blog </a></h1>
                 <nav><ul>
-                    <li><a href="https://tingox.github.io/category/blog.html">Blog</a></li>
+                    <li><a href="/category/blog.html">Blog</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://tingox.github.io/git-more-to-learn.html">git - more to learn</a></h1>
+                    <h1 class="entry-title"><a href="/alternatives-to-github.html">Alternatives to Github</a></h1>
 <footer class="post-info">
-        <abbr class="published" title="2018-05-25T01:59:38+02:00">
-                Published: Fri 25 May 2018
+        <abbr class="published" title="2018-06-05T00:50:51+02:00">
+                Published: Tue 05 June 2018
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
-</footer><!-- /.post-info --><p>For some reason, the submodule ("output") had a detached head, and no matter how much I tried</p>
-<div class="highlight"><pre><span></span>git submodule init
-git submodule update
-</pre></div>
-
-
-<p>the HEAD was still detached. In the end, I just changed into the output directory and did a <code>git checkout master</code> - the existing content was going to be flushed away by Pelican anyway. That worked nicely.</p>                </article>
+</footer><!-- /.post-info --><p>Alternatives to Github, some offer a hosted experience, some requires self-hosting. Check out <a href="https://gitea.io/" title="Gitea">Gitea</a> which requires Go, <a href="https://about.gitlab.com/" title="GitLab">GitLab</a>, <a href="https://bitbucket.org/" title="Bitbucket">Bitbucket</a> by Atlassian, <a href="http://gitprep.yukikimoto.com/" title="GitPrep">GitPrep</a> which calls itself a Github clone, <a href="https://kallithea-scm.org/" title="Kallithea">Kallithea</a>, <a href="https://www.phacility.com/phabricator/" title="Phabricator">Phabricator</a> which is used by FreeBSD among others. There are probably more as well.</p>                </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
@@ -47,7 +40,35 @@ git submodule update
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/slides-with-markdown.html" rel="bookmark"
+                    <h1><a href="/git-more-to-learn.html" rel="bookmark"
+                           title="Permalink to git - more to learn">git - more to learn</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-05-25T01:59:38+02:00">
+                Published: Fri 25 May 2018
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+        </address>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
+
+</footer><!-- /.post-info -->                <p>For some reason, the submodule ("output") had a detached head, and no matter how much I tried</p>
+<div class="highlight"><pre><span></span>git submodule init
+git submodule update
+</pre></div>
+
+
+<p>the HEAD was still detached. In the end, I just changed into the output directory and did a <code>git checkout master</code> - the existing content was going to …</p>
+                <a class="readmore" href="/git-more-to-learn.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/slides-with-markdown.html" rel="bookmark"
                            title="Permalink to Slides with Markdown">Slides with Markdown</a></h1>
                 </header>
 
@@ -58,20 +79,20 @@ git submodule update
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>I should check out <a href="https://github.com/adamzap/landslide" title="Landslide">Landslide</a>, <a href="https://yhatt.github.io/marp/" title="Marp">Marp</a>, <a href="https://pandoc.org/" title="pandoc">pandoc</a>, <a href="https://github.com/jacksingleton/hacker-slides" title="Hacker Slides">Hacker Slides</a> and other Markdown-powered slide generators.
 Not my idea, I read the article <a href="https://opensource.com/article/18/5/markdown-slide-generators">4 Markdown-powered slide generators</a> by Scott Nesbitt. All inspiration comes from there.</p>
 <p>Landslide is (mostly) Python which is nice. Marp is an <a href="http://electron.atom.io/">Electron</a> app, so a bit "heavier" on …</p>
-                <a class="readmore" href="https://tingox.github.io/slides-with-markdown.html">read more</a>
+                <a class="readmore" href="/slides-with-markdown.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/github-cheatsheets-.html" rel="bookmark"
+                    <h1><a href="/github-cheatsheets-.html" rel="bookmark"
                            title="Permalink to Github cheatsheets">Github cheatsheets</a></h1>
                 </header>
 
@@ -82,20 +103,20 @@ Not my idea, I read the article <a href="https://opensource.com/article/18/5/mar
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>There are two slightly different git "cheat sheets" that you can download from Github, one <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf">blue</a> and 
 one <a href="https://education.github.com/git-cheat-sheet-education.pdf">green</a> in color. The blue one refers to Github Training while the green one refers to Github Education.
 Also, conetents and wording is slightly different between them. Still, they are both useful …</p>
-                <a class="readmore" href="https://tingox.github.io/github-cheatsheets-.html">read more</a>
+                <a class="readmore" href="/github-cheatsheets-.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/progress-on-windows-.html" rel="bookmark"
+                    <h1><a href="/progress-on-windows-.html" rel="bookmark"
                            title="Permalink to Progress on Windows">Progress on Windows</a></h1>
                 </header>
 
@@ -106,9 +127,9 @@ Also, conetents and wording is slightly different between them. Still, they are 
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
 The script is simple</p>
@@ -122,13 +143,13 @@ The script is simple</p>
 
 
 <p>the Makefile fragment looks …</p>
-                <a class="readmore" href="https://tingox.github.io/progress-on-windows-.html">read more</a>
+                <a class="readmore" href="/progress-on-windows-.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/output-first.html" rel="bookmark"
+                    <h1><a href="/output-first.html" rel="bookmark"
                            title="Permalink to Output first">Output first</a></h1>
                 </header>
 
@@ -139,19 +160,19 @@ The script is simple</p>
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>As the original article says; you have to commit and push the output directory <em>before</em> pushing the source files.
 Don't forget it again!</p>
-                <a class="readmore" href="https://tingox.github.io/output-first.html">read more</a>
+                <a class="readmore" href="/output-first.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/-pelican-on-windows-.html" rel="bookmark"
+                    <h1><a href="/-pelican-on-windows-.html" rel="bookmark"
                            title="Permalink to Pelican on Windows">Pelican on Windows</a></h1>
                 </header>
 
@@ -162,20 +183,20 @@ Don't forget it again!</p>
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>Installing Pelican on Windows is quite easy. You need <a href="https://www.python.org/">Python</a> of course, then it is just 'pip install pelican' followed 
 by 'pip install MarkDown' and Pelican is installed. All this from <a href="https://en.wikipedia.org/wiki/PowerShell">PowerShell</a>.</p>
 <p>Unfortunately, my setup uses a Makefile (originally I set up this under Linux). So I need make, the …</p>
-                <a class="readmore" href="https://tingox.github.io/-pelican-on-windows-.html">read more</a>
+                <a class="readmore" href="/-pelican-on-windows-.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/lack-of-news.html" rel="bookmark"
+                    <h1><a href="/lack-of-news.html" rel="bookmark"
                            title="Permalink to Lack of news">Lack of news</a></h1>
                 </header>
 
@@ -186,18 +207,18 @@ by 'pip install MarkDown' and Pelican is installed. All this from <a href="https
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>The lack of news here just mirrors the fact that I am busy doing other things. Nothing to worry about.</p>
-                <a class="readmore" href="https://tingox.github.io/lack-of-news.html">read more</a>
+                <a class="readmore" href="/lack-of-news.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/markup-markdown.html" rel="bookmark"
+                    <h1><a href="/markup-markdown.html" rel="bookmark"
                            title="Permalink to Markup - MarkDown">Markup - MarkDown</a></h1>
                 </header>
 
@@ -208,18 +229,18 @@ by 'pip install MarkDown' and Pelican is installed. All this from <a href="https
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>Most static site generators defaults to <a href="https://daringfireball.net/projects/markdown/">MarkDown</a> as a markup language. So I better learn it. There is a <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a> available. Wikipedia:<a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>.</p>
-                <a class="readmore" href="https://tingox.github.io/markup-markdown.html">read more</a>
+                <a class="readmore" href="/markup-markdown.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/another-markup-option-wikicreole.html" rel="bookmark"
+                    <h1><a href="/another-markup-option-wikicreole.html" rel="bookmark"
                            title="Permalink to another markup option - wikicreole">another markup option - wikicreole</a></h1>
                 </header>
 
@@ -230,20 +251,20 @@ by 'pip install MarkDown' and Pelican is installed. All this from <a href="https
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>The <a href="http://www.wikicreole.org/" title="Wikicreole">wikicreole</a> markup system looks almost like the markup that <a href="http://mediawiki.org/" title="Mediawiki">Mediawiki</a> uses, which is nice. 
 I have used mediawiki a lot, so this is one syntax that I am familiar with. Wikicreole exists as a plugin for Pelican as 
 well <a href="https://github.com/getpelican/pelican-plugins/tree/master/creole_reader">Creole Reader</a>.</p>
-                <a class="readmore" href="https://tingox.github.io/another-markup-option-wikicreole.html">read more</a>
+                <a class="readmore" href="/another-markup-option-wikicreole.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/easy-to-break.html" rel="bookmark"
+                    <h1><a href="/easy-to-break.html" rel="bookmark"
                            title="Permalink to Easy to break">Easy to break</a></h1>
                 </header>
 
@@ -258,21 +279,21 @@ well <a href="https://github.com/getpelican/pelican-plugins/tree/master/creole_r
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>Pelican works, but it seems a bit fragile. 'make html' works all the time, but 'make publish' followed by the necessary 
 git commands doesn't always give the expected result. Sometimes only the text is published, and lacks the "theme", 
 which creates a bad look.</p>
 <p>2017-09-01: and it broke again today …</p>
-                <a class="readmore" href="https://tingox.github.io/easy-to-break.html">read more</a>
+                <a class="readmore" href="/easy-to-break.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/second-post.html" rel="bookmark"
+                    <h1><a href="/second-post.html" rel="bookmark"
                            title="Permalink to Second post">Second post</a></h1>
                 </header>
 
@@ -283,22 +304,22 @@ which creates a bad look.</p>
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>This is just the second blog post. The inspiration for doing this came from this <a href="https://fedoramagazine.org/make-github-pages-blog-with-pelican/" title="Make a Github Pages blog with Pelican">article</a>. Other options for static
 website generators are <a href="https://jekyllrb.com/">Jekyll</a> written in Ruby, <a href="http://hyde.github.io/">Hyde</a> written in Python, 
 <a href="https://hexo.io/">Hexo</a> written in Javascript (nodeJS), <a href="http://gohugo.io/">Hugo</a> written in Go, 
 <a href="https://github.com/eudicots/Cactus">Cactus</a> written in Python and using Django, <a href="https://www.getlektor.com/">Lektor</a> 
 in Python …</p>
-                <a class="readmore" href="https://tingox.github.io/second-post.html">read more</a>
+                <a class="readmore" href="/second-post.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
 
             <li><article class="hentry">
                 <header>
-                    <h1><a href="https://tingox.github.io/learning-git-and-github.html" rel="bookmark"
+                    <h1><a href="/learning-git-and-github.html" rel="bookmark"
                            title="Permalink to Learning git and github">Learning git and github</a></h1>
                 </header>
 
@@ -309,12 +330,12 @@ in Python …</p>
         </abbr>
 
         <address class="vcard author">
-                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+                By                         <a class="url fn" href="/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>I am just learning about git, github and so on. Nothing interesting here.</p>
-                <a class="readmore" href="https://tingox.github.io/learning-git-and-github.html">read more</a>
+                <a class="readmore" href="/learning-git-and-github.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
                 </ol><!-- /#posts-list -->
@@ -332,7 +353,6 @@ in Python …</p>
                 <div class="social">
                         <h2>social</h2>
                         <ul>
-                            <li><a href="https://tingox.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
                             <li><a href="https://plus.google.com/108051455536264011267">Google+</a></li>
                             <li><a href="https://www.linkedin.com/in/torfinn-ingolfsen-9816a93/">LinkedIn profile</a></li>
