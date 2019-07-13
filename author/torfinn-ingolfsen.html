@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="english">
 <head>
         <meta charset="utf-8" />
         <title>Just a blog - Torfinn Ingolfsen</title>
         <link rel="stylesheet" href="https://tingox.github.io/theme/css/main.css" />
-        <link href="https://tingox.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Just a blog Atom Feed" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
 </head>
 
 <body id="index" class="home">
@@ -16,12 +11,38 @@
                 <h1><a href="https://tingox.github.io/">Just a blog </a></h1>
                 <nav><ul>
                     <li><a href="https://tingox.github.io/category/blog.html">Blog</a></li>
+                    <li><a href="https://tingox.github.io/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://tingox.github.io/another-git-cheatsheet.html">another git cheatsheet</a></h1>
+                    <h1 class="entry-title"><a href="https://tingox.github.io/pelican-4-0-1-is-in.html">Pelican 4.0.1 is in</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-07-13T16:21:12+02:00">
+                Published: Sat 13 July 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+        </address>
+<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+
+</footer><!-- /.post-info --><p>Long time since I posted here. Time has passed, and now Pelican 4.0.1 is out, I installed that on my new workstation (along with a few other missing tools). That's all.</p>
+<p>Ok, it seems I managed to break it again. Will this change fix anything?</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://tingox.github.io/another-git-cheatsheet.html" rel="bookmark"
+                           title="Permalink to another git cheatsheet">another git cheatsheet</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2019-03-19T17:21:54+01:00">
                 Published: Tue 19 March 2019
@@ -32,12 +53,10 @@
         </address>
 <p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
 
-</footer><!-- /.post-info --><p>I found another <a href="http://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf">git cheat sheet</a>, which looks very nice. Found at <a href="http://rogerdudler.github.io/git-guide/">git - the simple guide</a>.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+</footer><!-- /.post-info -->                <p>I found another <a href="http://rogerdudler.github.io/git-guide/files/git_cheat_sheet.pdf">git cheat sheet</a>, which looks very nice. Found at <a href="http://rogerdudler.github.io/git-guide/">git - the simple guide</a>.</p>
+                <a class="readmore" href="https://tingox.github.io/another-git-cheatsheet.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -79,8 +98,8 @@
 <p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
 
 </footer><!-- /.post-info -->                <p>For some reason, the submodule ("output") had a detached head, and no matter how much I tried</p>
-<div class="highlight"><pre><span></span>git submodule init
-git submodule update
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="k">update</span>
 </pre></div>
 
 
@@ -156,16 +175,16 @@ Also, conetents and wording is slightly different between them. Still, they are 
 
 </footer><!-- /.post-info -->                <p>Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
 The script is simple</p>
-<div class="highlight"><pre><span></span>get-date -UFormat &#39;%Y-%m-%d %H:%M:%S&#39;
+<div class="highlight"><pre><span></span><span class="k">get</span><span class="o">-</span><span class="nb">date</span> <span class="o">-</span><span class="n">UFormat</span> <span class="s1">&#39;%Y-%m-%d %H:%M:%S&#39;</span>
 </pre></div>
 
 
 <p>yes, that is all. From the Makefile, I run it as </p>
-<div class="highlight"><pre><span></span>powershell -File .\ScriptDate.ps1
+<div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span>
 </pre></div>
 
 
-<p>the Makefile fragment looks …</p>
+<p>the Makefile fragment …</p>
                 <a class="readmore" href="https://tingox.github.io/progress-on-windows-.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
@@ -355,7 +374,7 @@ in Python …</p>
         <address class="vcard author">
                 By                         <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
         </address>
-<p>In <a href="https://tingox.github.io/category/blog.html">Blog</a>.</p>
+<p>In <a href="https://tingox.github.io/category/misc.html">misc</a>.</p>
 
 </footer><!-- /.post-info -->                <p>I am just learning about git, github and so on. Nothing interesting here.</p>
                 <a class="readmore" href="https://tingox.github.io/learning-git-and-github.html">read more</a>
@@ -370,16 +389,15 @@ in Python …</p>
                             <li><a href="http://getpelican.com/">Pelican</a></li>
                             <li><a href="http://python.org/">Python.org</a></li>
                             <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="https://sites.google.com/site/tingox/">tingox on Google Sites</a></li>
+                            <li><a href="http://heim.bitraf.no/tingo/">Torfinn @heim</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
                         <h2>social</h2>
                         <ul>
-                            <li><a href="https://tingox.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="https://plus.google.com/108051455536264011267">Google+</a></li>
                             <li><a href="https://www.linkedin.com/in/torfinn-ingolfsen-9816a93/">LinkedIn profile</a></li>
+                            <li><a href="#">Another social link</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->

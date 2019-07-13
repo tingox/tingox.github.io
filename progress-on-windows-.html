@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="english">
 <head>
         <meta charset="utf-8" />
         <title>Progress on Windows</title>
         <link rel="stylesheet" href="https://tingox.github.io/theme/css/main.css" />
-        <link href="https://tingox.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Just a blog Atom Feed" />
-
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
 </head>
 
 <body id="index" class="home">
@@ -16,6 +11,7 @@
                 <h1><a href="https://tingox.github.io/">Just a blog </a></h1>
                 <nav><ul>
                     <li class="active"><a href="https://tingox.github.io/category/blog.html">Blog</a></li>
+                    <li><a href="https://tingox.github.io/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 <section id="content" class="body">
@@ -39,17 +35,17 @@
 
 </footer><!-- /.post-info -->      <p>Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
 The script is simple</p>
-<div class="highlight"><pre><span></span>get-date -UFormat &#39;%Y-%m-%d %H:%M:%S&#39;
+<div class="highlight"><pre><span></span><span class="k">get</span><span class="o">-</span><span class="nb">date</span> <span class="o">-</span><span class="n">UFormat</span> <span class="s1">&#39;%Y-%m-%d %H:%M:%S&#39;</span>
 </pre></div>
 
 
 <p>yes, that is all. From the Makefile, I run it as </p>
-<div class="highlight"><pre><span></span>powershell -File .\ScriptDate.ps1
+<div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span>
 </pre></div>
 
 
 <p>the Makefile fragment looks like this</p>
-<div class="highlight"><pre><span></span>DATE := $(shell powershell -File .\ScriptDate.ps1)
+<div class="highlight"><pre><span></span><span class="nb">DATE</span> <span class="p">:</span><span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span><span class="p">)</span>
 </pre></div>
 
 
@@ -66,16 +62,15 @@ The script is simple</p>
                             <li><a href="http://getpelican.com/">Pelican</a></li>
                             <li><a href="http://python.org/">Python.org</a></li>
                             <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="https://sites.google.com/site/tingox/">tingox on Google Sites</a></li>
+                            <li><a href="http://heim.bitraf.no/tingo/">Torfinn @heim</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">
                         <h2>social</h2>
                         <ul>
-                            <li><a href="https://tingox.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
 
-                            <li><a href="https://plus.google.com/108051455536264011267">Google+</a></li>
                             <li><a href="https://www.linkedin.com/in/torfinn-ingolfsen-9816a93/">LinkedIn profile</a></li>
+                            <li><a href="#">Another social link</a></li>
                         </ul>
                 </div><!-- /.social -->
         </section><!-- /#extras -->
