@@ -3,16 +3,29 @@
 <head>
           <title>Just a blog - Progress on Windows</title>
         <meta charset="utf-8" />
+<<<<<<< HEAD
 
 
 
 
 
+=======
+        <title>Progress on Windows</title>
+        <link rel="stylesheet" href="https://tingox.github.io/theme/css/main.css" />
+>>>>>>> 52935b157ded4adc62376a3788aff12334f09ec5
 </head>
 
 <body id="index" class="home">
         <header id="banner" class="body">
+<<<<<<< HEAD
                 <h1><a href="https://tingox.github.io/">Just a blog <strong></strong></a></h1>
+=======
+                <h1><a href="https://tingox.github.io/">Just a blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://tingox.github.io/category/blog.html">Blog</a></li>
+                    <li><a href="https://tingox.github.io/category/misc.html">misc</a></li>
+                </ul></nav>
+>>>>>>> 52935b157ded4adc62376a3788aff12334f09ec5
         </header><!-- /#banner -->
         <nav id="menu"><ul>
             <li class="active"><a href="https://tingox.github.io/category/blog.html">Blog</a></li>
@@ -39,17 +52,17 @@
   <div class="entry-content">
     <p>Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
 The script is simple</p>
-<div class="highlight"><pre><span></span>get-date -UFormat &#39;%Y-%m-%d %H:%M:%S&#39;
+<div class="highlight"><pre><span></span><span class="k">get</span><span class="o">-</span><span class="nb">date</span> <span class="o">-</span><span class="n">UFormat</span> <span class="s1">&#39;%Y-%m-%d %H:%M:%S&#39;</span>
 </pre></div>
 
 
 <p>yes, that is all. From the Makefile, I run it as </p>
-<div class="highlight"><pre><span></span>powershell -File .\ScriptDate.ps1
+<div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span>
 </pre></div>
 
 
 <p>the Makefile fragment looks like this</p>
-<div class="highlight"><pre><span></span>DATE := $(shell powershell -File .\ScriptDate.ps1)
+<div class="highlight"><pre><span></span><span class="nb">DATE</span> <span class="p">:</span><span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span><span class="p">)</span>
 </pre></div>
 
 
@@ -57,6 +70,29 @@ The script is simple</p>
 <p>The problem with extra dashes ('-') still exists, the only improvement I have managed is to remove the dash in front.</p>
   </div><!-- /.entry-content -->
 </section>
+<<<<<<< HEAD
+=======
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>links</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="http://heim.bitraf.no/tingo/">Torfinn @heim</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+
+                            <li><a href="https://www.linkedin.com/in/torfinn-ingolfsen-9816a93/">LinkedIn profile</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+>>>>>>> 52935b157ded4adc62376a3788aff12334f09ec5
         <footer id="contentinfo" class="body">
                 <address id="about" class="vcard body">
                 Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
