@@ -64,17 +64,17 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
 	
         <div><p>Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
 The script is simple</p>
-<div class="highlight"><pre><span></span>get-date -UFormat &#39;%Y-%m-%d %H:%M:%S&#39;
+<div class="highlight"><pre><span></span><span class="k">get</span><span class="o">-</span><span class="nb">date</span> <span class="o">-</span><span class="n">UFormat</span> <span class="s1">&#39;%Y-%m-%d %H:%M:%S&#39;</span>
 </pre></div>
 
 
 <p>yes, that is all. From the Makefile, I run it as </p>
-<div class="highlight"><pre><span></span>powershell -File .\ScriptDate.ps1
+<div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span>
 </pre></div>
 
 
 <p>the Makefile fragment looks like this</p>
-<div class="highlight"><pre><span></span>DATE := $(shell powershell -File .\ScriptDate.ps1)
+<div class="highlight"><pre><span></span><span class="nb">DATE</span> <span class="p">:</span><span class="o">=</span> <span class="err">$</span><span class="p">(</span><span class="n">shell</span> <span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span><span class="p">)</span>
 </pre></div>
 
 
@@ -148,7 +148,7 @@ The script is simple</p>
     </div>     </div> 
 <footer>
 <br />
-<p><a href="https://tingox.github.io">Just a blog</a> &copy; Torfinn Ingolfsen 2019</p>
+<p><a href="https://tingox.github.io">Just a blog</a> &copy; Torfinn Ingolfsen 2020</p>
 </footer>
 
 </div> <!-- /container -->

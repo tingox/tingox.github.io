@@ -58,8 +58,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="https://tingox.github.io/broken-theme.html"><h1>Broken theme</h1></a>
-Mon 25 November 2019
+            <a href="https://tingox.github.io/cudatext-looks-nice.html"><h1>CudaText looks nice</h1></a>
+Mon 24 February 2020
 
 by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
  
@@ -68,10 +68,31 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
  
         </div>
         
-        <div><p>For some reason, the simple theme was broken, at least on my machine. So I downloaded <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a> and changed to the tuxlite_tbs theme. Also, I need to set ${EDITOR} on my machine. Broken seems to be a theme here...</p></div>
+        <div><p><a href="http://uvviewsoft.com/cudatext/">CudaText</a> looks nice. A lot of features, and written in Pascal too. If I set $EDITOR correctly, it will let me
+edit my blog posts too, directly from the Makefile. Perhaps I should spend some time learning it.</p>
+<p>Ok, middle button (mouse) paste doesn't work out iof the box, instead it does something with the scroll wheel. I need to change that.</p></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="https://tingox.github.io/broken-theme.html"><h2>Broken theme</h2></a>
+        <div class= "well small"> Mon 25 November 2019
+
+by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>For some reason, the simple theme was broken, at least on my machine. So I downloaded <a href="https://github.com/getpelican/pelican-themes">pelican-themes</a> and changed to the tuxlite_tbs theme. Also, I need to set ${EDITOR} on my machine. Broken seems to be a theme here...</p>
+<p>Update: but now I need to do <code>cd ..; git clone --recursive …</code></p> <a class="btn btn-info xsmall" href="https://tingox.github.io/broken-theme.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -219,8 +240,8 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
 
  </div>
         <div class="summary"><p>For some reason, the submodule ("output") had a detached head, and no matter how much I tried</p>
-<div class="highlight"><pre><span></span>git submodule init
-git submodule update
+<div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="k">update</span>
 </pre></div>
 
 
@@ -284,16 +305,16 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
  </div>
         <div class="summary"><p>Ok, I have figured out how to get date the Makefile in Windows, using powershell and a powershell script.
 The script is simple</p>
-<div class="highlight"><pre><span></span>get-date -UFormat &#39;%Y-%m-%d %H:%M:%S&#39;
+<div class="highlight"><pre><span></span><span class="k">get</span><span class="o">-</span><span class="nb">date</span> <span class="o">-</span><span class="n">UFormat</span> <span class="s1">&#39;%Y-%m-%d %H:%M:%S&#39;</span>
 </pre></div>
 
 
 <p>yes, that is all. From the Makefile, I run it as </p>
-<div class="highlight"><pre><span></span>powershell -File .\ScriptDate.ps1
+<div class="highlight"><pre><span></span><span class="n">powershell</span> <span class="o">-</span><span class="n">File</span> <span class="p">.</span><span class="err">\</span><span class="n">ScriptDate</span><span class="p">.</span><span class="n">ps1</span>
 </pre></div>
 
 
-<p>the Makefile fragment looks …</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/progress-on-windows-.html">read more</a></div>
+<p>the Makefile fragment …</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/progress-on-windows-.html">read more</a></div>
     </div>	
 				
 
@@ -434,31 +455,14 @@ website generators are <a href="https://jekyllrb.com/">Jekyll</a> written in Rub
 in Python …</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/second-post.html">read more</a></div>
     </div>	
 				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="https://tingox.github.io/learning-git-and-github.html"><h2>Learning git and github</h2></a>
-        <div class= "well small"> Thu 31 August 2017
-
-by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
- 
-
-
- </div>
-        <div class="summary"><p>I am just learning about git, github and so on. Nothing interesting here.</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/learning-git-and-github.html">read more</a></div>
-    </div>	
-				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
     <li class="active"><a href="https://tingox.github.io/index.html">1</a></li>
+    <li class=""><a href="https://tingox.github.io/index2.html">2</a></li>
 
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+    <li class="next"><a href="https://tingox.github.io/index2.html">Next &rarr;</a></li>
 
 </ul>
 </div>
@@ -528,7 +532,7 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
     </div>     </div> 
 <footer>
 <br />
-<p><a href="https://tingox.github.io">Just a blog</a> &copy; Torfinn Ingolfsen 2019</p>
+<p><a href="https://tingox.github.io">Just a blog</a> &copy; Torfinn Ingolfsen 2020</p>
 </footer>
 
 </div> <!-- /container -->
