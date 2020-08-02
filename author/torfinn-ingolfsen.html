@@ -59,8 +59,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="https://tingox.github.io/git-resources-for-newcomers.html"><h1>Git resources for newcomers</h1></a>
-Wed 22 July 2020
+            <a href="https://tingox.github.io/freebsd-with-debian-vm-for-wireless-network.html"><h1>FreeBSD with Debian vm for wireless network</h1></a>
+Sun 02 August 2020
 
 by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
  
@@ -69,10 +69,171 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
  
         </div>
         
-        <div><p>When I first started learning git, <a href="https://learngitbranching.js.org/">Learning git branching</a> was a great way for me to understand how things works. As it turns out <a href="https://try.github.io/">Resources to learn Git</a> has a lot more, all of it useful.</p></div>
+        <div><p>New hardware doesn't always have working drivers in FreeBSD. The developers do a great job, but there are not enough of them. 
+On the other side, it seems like hardware companies pour out an endless stream of new hardware every month.</p>
+<p>I wanted to see if I could use a Debian virtual machine (vm) as a guest on the FreeBSD host to fix the "unsupported wifi in FreeBSD" problem.
+FreeBSD has great support for runnng virtual machines through <a href="https://bhyve.org/">bhyve</a>. And almost all newer machines has the necessary hardware support
+for running virtual machines.</p>
+<p>So I bought a cheap laptop on a summer outlet sale on one of the online shops here in Norway. For NOK 1997.- (which is about USD 220.- at the current exchange
+ rate) I got an "as new, in original box" <a href="https://psref.lenovo.com/Detail/Lenovo%20Laptops/ideapad_530S_14_AMD?M=81H10000MX">Lenovo ideapad 530S-14ARR</a> with AMD Ryzen 3 2200U cpu,
+4 GB memory and 128 GB SSD. The integrated graphics is AMD Radeon Vega 3, I was unsure if it was supported but it didn't matter for this experiment. I was pretty sure the wireless
+adapter / chipset was not supported, even if the description was a bit vague "11ac, 1x1, Wi-Fi + Bluetooth combo adapter" - many newer laptops have Broadcom wireless and that currently 
+has limited support in FreeBSD.</p>
+<p>There is one initial hurdle to overcome when installing and configuring FreeBSD (and Debian too) today: most install methods are set up for a network install. It is possible to install either
+without a working network, but it is just harder (I should note that the install itself isn't the hardest part, but adding packages you need after the install is finished is). So I 
+used a usb-hub-with-ethernet-port dongle when I did the initial install, for FreeBSD and packages, and also for the Debian vm and packages. In FreeBSD this device shows up as</p>
+<div class="highlight"><pre><span></span><span class="err">root@kg-pod530:~ # usbconfig -d ugen0.2</span>
+<span class="err">ugen0.2: &lt;GenesysLogic USB2.0 Hub&gt; at usbus0, cfg=0 md=HOST spd=HIGH (480Mbps) pwr=SAVE (100mA)</span>
+<span class="err">root@kg-pod530:~ # usbconfig -d ugen0.3</span>
+<span class="err">ugen0.3: &lt;Realtek USB 10/100 LAN&gt; at usbus0, cfg=0 md=HOST spd=HIGH (480Mbps) pwr=ON (100mA)</span>
+<span class="err">root@kg-pod530:~ # usbconfig -d ugen0.4</span>
+<span class="err">ugen0.4: &lt;vendor 0x0cf3 product 0xe500&gt; at usbus0, cfg=0 md=HOST spd=FULL (12Mbps) pwr=ON (100mA)</span>
+<span class="err">root@kg-pod530:~ # usbconfig -d ugen0.5</span>
+<span class="err">ugen0.5: &lt;GenesysLogic USB3.0 Hub&gt; at usbus0, cfg=0 md=HOST spd=SUPER (5.0Gbps) pwr=SAVE (0mA)</span>
+</pre></div>
+
+
+<p>with usbconfig, and this is what shows in <code>/var/log/messges</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">05</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ugen0</span><span class="p">.</span><span class="mi">2</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">GenesysLogic</span> <span class="n">USB2</span><span class="p">.</span><span class="mi">0</span> <span class="n">Hub</span><span class="o">&gt;</span> <span class="k">at</span> <span class="n">usbus0</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">05</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">uhub2</span> <span class="k">on</span> <span class="n">uhub1</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">05</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">uhub2</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">GenesysLogic</span> <span class="n">USB2</span><span class="p">.</span><span class="mi">0</span> <span class="n">Hub</span><span class="p">,</span> <span class="k">class</span> <span class="mi">9</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="n">rev</span> <span class="mi">2</span><span class="p">.</span><span class="mi">10</span><span class="o">/</span><span class="mi">92</span><span class="p">.</span><span class="mi">24</span><span class="p">,</span> <span class="n">addr</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="k">on</span> <span class="n">usbus0</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">05</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">uhub2</span><span class="p">:</span> <span class="n">MTT</span> <span class="n">enabled</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">05</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">uhub2</span><span class="p">:</span> <span class="mi">4</span> <span class="n">ports</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">removable</span><span class="p">,</span> <span class="k">self</span> <span class="n">powered</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">05</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ugen0</span><span class="p">.</span><span class="mi">3</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Realtek</span> <span class="n">USB</span> <span class="mi">10</span><span class="o">/</span><span class="mi">100</span> <span class="n">LAN</span><span class="o">&gt;</span> <span class="k">at</span> <span class="n">usbus0</span>
+
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">06</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ugen0</span><span class="p">.</span><span class="mi">5</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">GenesysLogic</span> <span class="n">USB3</span><span class="p">.</span><span class="mi">0</span> <span class="n">Hub</span><span class="o">&gt;</span> <span class="k">at</span> <span class="n">usbus0</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">06</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">uhub3</span> <span class="k">on</span> <span class="n">uhub1</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">06</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">uhub3</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">GenesysLogic</span><span class="o">&gt;</span> <span class="k">on</span> <span class="n">usbus0</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">uhub3</span><span class="p">:</span> <span class="mi">4</span> <span class="n">ports</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">removable</span><span class="p">,</span> <span class="k">self</span> <span class="n">powered</span>
+
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ure0</span> <span class="k">on</span> <span class="n">uhub2</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ure0</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">Realtek</span> <span class="n">USB</span> <span class="mi">10</span><span class="o">/</span><span class="mi">100</span> <span class="n">LAN</span><span class="p">,</span> <span class="k">class</span> <span class="mi">0</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="n">rev</span> <span class="mi">2</span><span class="p">.</span><span class="mi">10</span><span class="o">/</span><span class="mi">20</span><span class="p">.</span><span class="mi">00</span><span class="p">,</span> <span class="n">addr</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="k">on</span> <span class="n">usbus0</span>
+
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">miibus0</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">MII</span> <span class="n">bus</span><span class="o">&gt;</span> <span class="k">on</span> <span class="n">ure0</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">rlphy0</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">RTL8201E</span> <span class="mi">10</span><span class="o">/</span><span class="mi">100</span> <span class="n">media</span> <span class="n">interface</span><span class="o">&gt;</span> <span class="n">PHY</span> <span class="mi">0</span> <span class="k">on</span> <span class="n">miibus0</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">rlphy0</span><span class="p">:</span>  <span class="mi">10</span><span class="n">baseT</span><span class="p">,</span> <span class="mi">10</span><span class="n">baseT</span><span class="o">-</span><span class="n">FDX</span><span class="p">,</span> <span class="mi">100</span><span class="n">baseTX</span><span class="p">,</span> <span class="mi">100</span><span class="n">baseTX</span><span class="o">-</span><span class="n">FDX</span><span class="p">,</span> <span class="n">auto</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ue0</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">USB</span> <span class="n">Ethernet</span><span class="o">&gt;</span> <span class="k">on</span> <span class="n">ure0</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ue0</span><span class="p">:</span> <span class="n">Ethernet</span> <span class="n">address</span><span class="p">:</span> <span class="mi">00</span><span class="p">:</span><span class="n">e0</span><span class="p">:</span><span class="mi">4</span><span class="k">c</span><span class="p">:</span><span class="mi">36</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="n">f8</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">07</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ue0</span><span class="p">:</span> <span class="n">link</span> <span class="k">state</span> <span class="n">changed</span> <span class="k">to</span> <span class="n">DOWN</span>
+<span class="n">Jul</span> <span class="mi">28</span> <span class="mi">22</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mi">09</span> <span class="n">kg</span><span class="o">-</span><span class="n">pod530</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">ue0</span><span class="p">:</span> <span class="n">link</span> <span class="k">state</span> <span class="n">changed</span> <span class="k">to</span> <span class="n">UP</span>
+</pre></div>
+
+
+<p>Once FreeBSD was installed, I could check what the wireless card was:</p>
+<div class="highlight"><pre><span></span><span class="err">root@kg-pod530:~ # pciconf -lv | grep -B 3 network</span>
+<span class="err">ppt0@pci0:1:0:0:    class=0x028000 card=0x090117aa chip=0x0042168c rev=0x31 hdr=0x00</span>
+<span class="err">    vendor     = &#39;Qualcomm Atheros&#39;</span>
+<span class="err">    device     = &#39;QCA9377 802.11ac Wireless Network Adapter&#39;</span>
+<span class="err">    class      = network</span>
+</pre></div>
+
+
+<p>so yes - currently not supported in FreeBSD. Next up was to set up a vm, I chose to install <a href="https://github.com/churchers/vm-bhyve">vm-bhyve</a> for that, it makes working with bhyve 
+virtual machines easier. I also wanted this vm to have access to the wireless hardware, so figure out how vm-bhyve sees it.</p>
+<div class="highlight"><pre><span></span><span class="err">root@kg-pod530:~ # vm passthru</span>
+<span class="err">DEVICE     BHYVE ID     READY        DESCRIPTION</span>
+<span class="err">hostb0     0/0/0        No           -</span>
+<span class="err">none0      0/0/2        No           -</span>
+<span class="err">hostb1     0/1/0        No           Family 17h (Models 00h-1fh) PCIe Dummy Host Bridge</span>
+<span class="err">pcib1      0/1/2        No           -</span>
+<span class="err">pcib2      0/1/7        No           -</span>
+<span class="err">hostb2     0/8/0        No           Family 17h (Models 00h-1fh) PCIe Dummy Host Bridge</span>
+<span class="err">pcib3      0/8/1        No           -</span>
+<span class="err">intsmb0    0/20/0       No           FCH SMBus Controller</span>
+<span class="err">isab0      0/20/3       No           FCH LPC Bridge</span>
+<span class="err">hostb3     0/24/0       No           -</span>
+<span class="err">hostb4     0/24/1       No           -</span>
+<span class="err">hostb5     0/24/2       No           -</span>
+<span class="err">hostb6     0/24/3       No           -</span>
+<span class="err">hostb7     0/24/4       No           -</span>
+<span class="err">hostb8     0/24/5       No           -</span>
+<span class="err">hostb9     0/24/6       No           -</span>
+<span class="err">hostb10    0/24/7       No           -</span>
+<span class="err">none1      1/0/0        No           QCA9377 802.11ac Wireless Network Adapter</span>
+<span class="err">nvme0      2/0/0        No           -</span>
+<span class="err">vgapci0    3/0/0        No           Raven Ridge [Radeon Vega Series / Radeon Vega Mobile Series]</span>
+<span class="err">hdac0      3/0/1        No           Raven Ridge HDMI/DP Audio Controller</span>
+<span class="err">none2      3/0/2        No           Family 17h (Models 10h-1fh) Platform Security Processor</span>
+<span class="err">xhci0      3/0/3        No           -</span>
+<span class="err">xhci1      3/0/4        No           -</span>
+<span class="err">hdac1      3/0/6        No           Family 17h (Models 10h-1fh) HD Audio Controller</span>
+<span class="err">none3      3/0/7        No           -</span>
+</pre></div>
+
+
+<p>so I want (or rather, the vm needs to have device 1/0/0). The way to configure this is to set up a <code>pptdevs</code> variable in <code>/boot/loader.conf</code>. Since I have an AMD cpu, the
+<code>hw.vmm.amdvi.enable=1</code> setting is also needed. Finally you need to load the vmm kernel module. Together, it looks like this</p>
+<div class="highlight"><pre><span></span><span class="err">root@kg-pod530:~ # cat /boot/loader.conf</span>
+<span class="err">hw.vmm.amdvi.enable=1</span>
+<span class="err">pptdevs=&quot;1/0/0&quot;</span>
+<span class="err">vmm_load=&quot;YES&quot;</span>
+</pre></div>
+
+
+<p>Debian vm install is quite straight forward, but I needed to use the non-free firmware image</p>
+<div class="highlight"><pre><span></span><span class="err">root@kg-pod530:~ # vm install gateway firmware-10.4.0-amd64-netinst.iso</span>
+<span class="err">root@kg-pod530:~ # vm console gateway</span>
+</pre></div>
+
+
+<p>Debian vm configuration. I used <a href="https://wiki.debian.org/BridgeNetworkConnectionsProxyArp">BridgeNetworkConnectionsProxyArp</a> as a guide, the only thing I needed to change (other 
+than network interface names) was the systemd unit file for dhcp-helper. I changed to file to this:</p>
+<div class="highlight"><pre><span></span><span class="n">tingo</span><span class="nv">@pod530</span><span class="o">-</span><span class="nl">gw</span><span class="p">:</span><span class="o">~</span><span class="err">$</span><span class="w"> </span><span class="n">cat</span><span class="w"> </span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">systemd</span><span class="o">/</span><span class="k">system</span><span class="o">/</span><span class="n">dhcp</span><span class="o">-</span><span class="n">helper</span><span class="p">.</span><span class="n">service</span><span class="w"></span>
+<span class="o">[</span><span class="n">Unit</span><span class="o">]</span><span class="w"></span>
+<span class="n">Description</span><span class="o">=</span><span class="n">DHCP</span><span class="o">/</span><span class="n">BOOTP</span><span class="w"> </span><span class="n">relay</span><span class="w"> </span><span class="n">agent</span><span class="w"></span>
+<span class="k">After</span><span class="o">=</span><span class="n">network</span><span class="p">.</span><span class="n">target</span><span class="w"></span>
+
+<span class="o">[</span><span class="n">Service</span><span class="o">]</span><span class="w"></span>
+<span class="n">Type</span><span class="o">=</span><span class="n">forking</span><span class="w"></span>
+<span class="n">EnvironmentFile</span><span class="o">=/</span><span class="n">etc</span><span class="o">/</span><span class="k">default</span><span class="o">/</span><span class="n">dhcp</span><span class="o">-</span><span class="n">helper</span><span class="w"></span>
+<span class="n">PIDFile</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">dhcp</span><span class="o">-</span><span class="n">helper</span><span class="p">.</span><span class="n">pid</span><span class="w"></span>
+<span class="err">#</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="ow">some</span><span class="w"> </span><span class="n">reason</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">wlp0s6</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">there</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="k">first</span><span class="w"> </span><span class="k">start</span><span class="p">,</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">restarting</span><span class="w"></span>
+<span class="n">Restart</span><span class="o">=</span><span class="k">on</span><span class="o">-</span><span class="n">failure</span><span class="w"></span>
+<span class="n">RestartSec</span><span class="o">=</span><span class="mi">5</span><span class="w"></span>
+<span class="n">TimeoutStartSec</span><span class="o">=</span><span class="mi">30</span><span class="w"></span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">dhcp</span><span class="o">-</span><span class="n">helper</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">dhcp</span><span class="o">-</span><span class="n">helper</span><span class="p">.</span><span class="n">pid</span><span class="w"> </span><span class="err">$</span><span class="n">DHCPHELPER_OPTS</span><span class="w"></span>
+
+<span class="o">[</span><span class="n">Install</span><span class="o">]</span><span class="w"></span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">multi</span><span class="o">-</span><span class="k">user</span><span class="p">.</span><span class="n">target</span><span class="w"></span>
+</pre></div>
+
+
+<p>before I changed it, the service would fail on boot and would need to be restarted. I just set up wpa_supplicant, rebooted the vm and it connected to the wireless network.</p>
+<p>Other problems. I also had too restrictive rules on my firewall, so I need to fix that before the response from the DHCP server would get to the FreeBSD machine.</p>
+<p>Final network setup on te FreeBSD side. I tried several things, but in the end, using <a href="https://www.freebsd.org/cgi/man.cgi?query=epair">epair(4)</a> interfaces worked.
+Currently, network configuration in <code>/etc/rc.conf</code> looks like this:</p>
+<div class="highlight"><pre><span></span><span class="err">cloned_interfaces=&quot;bridge0 epair0&quot;</span>
+<span class="err">ifconfig_bridge0=&quot;addm epair0b&quot;</span>
+<span class="err">defaultroute_delay=&quot;1&quot;</span>
+<span class="err">background_dhclient_epair0a=&quot;YES&quot;</span>
+<span class="err">ifconfig_epair0a=&quot;DHCP&quot;</span>
+<span class="err">ifconfig_epair0b=&quot;up&quot;</span>
+</pre></div>
+
+
+<p>the bridge is configured as manual in vm-bhyve, and the vm connects to it. The reason for putting dhclient in the background and minimizing the defaultroute delay is that
+the FreeBSD machine will not get an ip address from the DHCP server until the vm is up and working. So better just make it boot quickly.</p></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="https://tingox.github.io/git-resources-for-newcomers.html"><h2>Git resources for newcomers</h2></a>
+        <div class= "well small"> Wed 22 July 2020
+
+by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>When I first started learning git, <a href="https://learngitbranching.js.org/">Learning git branching</a> was a great way for me to understand how things works. As it turns out <a href="https://try.github.io/">Resources to learn Git</a> has a lot more, all of it useful.</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/git-resources-for-newcomers.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -429,27 +590,6 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
         <div class="summary"><p>The <a href="http://www.wikicreole.org/" title="Wikicreole">wikicreole</a> markup system looks almost like the markup that <a href="http://mediawiki.org/" title="Mediawiki">Mediawiki</a> uses, which is nice. 
 I have used mediawiki a lot, so this is one syntax that I am familiar with. Wikicreole exists as a plugin for Pelican as 
 well <a href="https://github.com/getpelican/pelican-plugins/tree/master/creole_reader">Creole Reader</a>.</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/another-markup-option-wikicreole.html">read more</a></div>
-    </div>	
-				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="https://tingox.github.io/easy-to-break.html"><h2>Easy to break</h2></a>
-        <div class= "well small"> Thu 31 August 2017
-
-by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
- 
-
-
- </div>
-        <div class="summary"><p>Pelican works, but it seems a bit fragile. 'make html' works all the time, but 'make publish' followed by the necessary 
-git commands doesn't always give the expected result. Sometimes only the text is published, and lacks the "theme", 
-which creates a bad look.</p>
-<p>2017-09-01: and it broke again today …</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/easy-to-break.html">read more</a></div>
     </div>	
 				
 <div class="pagination">
