@@ -2,7 +2,7 @@
 <html lang="english">
 <head>
     <meta charset="utf-8">
-    <title>Just a blog - Blog</title>
+    <title>Just a blog - blog</title>
     <meta name="description" content="">
     <meta name="author" content="Torfinn Ingolfsen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,8 +59,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="https://tingox.github.io/open-source-kvm-over-ip.html"><h1>Open source KVM over IP</h1></a>
-Mon 03 August 2020
+            <a href="https://tingox.github.io/static-generators-for-picture-galleries.html"><h1>Static generators for picture galleries</h1></a>
+Fri 25 September 2020
 
 by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
  
@@ -69,14 +69,37 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
  
         </div>
         
-        <div><p><a href="https://pikvm.org/">Pi-KVM</a> is a very interesting project. It allows you to build a fully functional <a href="https://en.wikipedia.org/wiki/KVM_switch">KVM</a> over IP solution using cheap 
-hardware and open source software. Source at Github: <a href="https://github.com/pikvm/pikvm">pikvm/pikvm</a> The KVM supports virtual CD-ROM and virtual flash drive too. You can power on / off
-the server via ATX power control. Wonderful, and useful too.</p>
-<p>The requirements for the server you are comntrolling isn't too great; it must have HDMI output (for VGA use a VGA-to-HDMI converter) and use  usb keyboard and mouse. As already
-mentioned in <a href="https://github.com/pikvm/pikvm/issues/26">issue 26</a> it is possible to create a FPGA-based capture device, so in theory you could handle other type of console output too.</p></div>
+        <div><p>If I want to put picture galleries on the web, I should look at static generators for picture galleries, as I have no need of comments and all that stuff.
+Some possible candidates are <a href="http://curator.sourceforge.net/local/">curator</a>, <a href="https://www.thregr.org/~wavexx/software/fgallery/">fgallery</a>, 
+<a href="https://sml.zincube.net/~niol/repositories.git/lazygal/about/">lazygal</a>, <a href="http://sigal.saimon.org/en/latest/">Sigal</a>, <a href="https://github.com/kensanata/sitelen-mute">Sitelen Mute</a>.
+The question then, is how to choose one? curator is written in Python (good), but is a bit old (Python 2?). fgallery is written in perl, and has a bigger list of dependencies than
+the other candidates. lazygal looks quite all right, Python &gt;= 3.7 (good) and can do lots of stuff. Sigal requires Python &gt;= 3.5 (good), can do the same things that lazygal can, it 
+supports relative output, and more. It doesn't have support for facedetect, if you need that. Sitelen Mute requires perl (like fgallery) and has a quite big list of dependencies, 
+so even if it has facedetect, I think I'll opt out of using it.</p>
+<p>Hmm, it seems like I have decided to try Sigal then.</p></div>
         <hr />
     </div>
 		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="https://tingox.github.io/open-source-kvm-over-ip.html"><h2>Open source KVM over IP</h2></a>
+        <div class= "well small"> Mon 03 August 2020
+
+by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><a href="https://pikvm.org/">Pi-KVM</a> is a very interesting project. It allows you to build a fully functional <a href="https://en.wikipedia.org/wiki/KVM_switch">KVM</a> over IP solution using cheap 
+hardware and open source software. Source at Github: <a href="https://github.com/pikvm/pikvm">pikvm/pikvm</a> The KVM supports virtual CD-ROM and virtual flash drive too. You can power on / off
+the server via ATX power …</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/open-source-kvm-over-ip.html">read more</a></div>
+    </div>	
+				
 
  
         
@@ -435,24 +458,6 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
         <div class="summary"><p>The lack of news here just mirrors the fact that I am busy doing other things. Nothing to worry about.</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/lack-of-news.html">read more</a></div>
     </div>	
 				
-
- 
-        
-
- 
-
-    <div class='article'>
-        <a href="https://tingox.github.io/markup-markdown.html"><h2>Markup - MarkDown</h2></a>
-        <div class= "well small"> Mon 04 September 2017
-
-by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.html">Torfinn Ingolfsen</a>
- 
-
-
- </div>
-        <div class="summary"><p>Most static site generators defaults to <a href="https://daringfireball.net/projects/markdown/">MarkDown</a> as a markup language. So I better learn it. There is a <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a> available. Wikipedia:<a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>.</p> <a class="btn btn-info xsmall" href="https://tingox.github.io/markup-markdown.html">read more</a></div>
-    </div>	
-				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
@@ -493,7 +498,7 @@ by <a class="url fn" href="https://tingox.github.io/author/torfinn-ingolfsen.htm
                 Categories
                 </li>
                 
-                <li><a href="https://tingox.github.io/category/blog.html">Blog</a></li>
+                <li><a href="https://tingox.github.io/category/blog.html">blog</a></li>
                 <li><a href="https://tingox.github.io/category/misc.html">misc</a></li>
                    
             </ul>
